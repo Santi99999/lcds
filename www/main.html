@@ -29,6 +29,7 @@
   <script>
 const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight'];
 let konamiCodePosition = 0;
+let audio = new Audio('ruta-del-archivo-de-audio.mp3');
 
 function checkKonamiCode(event) {
   if (event.code === konamiCode[konamiCodePosition]) {
@@ -47,6 +48,8 @@ function executeKonamiFunction() {
   interactableElements.forEach((element) => {
     element.style.animation = 'slide-down 1s infinite linear';
     element.style.backgroundColor = getRandomColor();
+    audio.loop = true;
+    audio.play();
     if (element.tagName.toLowerCase() === 'img') {
       element.src = 'https://media.tenor.com/y3r2tX3V5gkAAAAC/lasagna-cat-dance.gif';
     }
