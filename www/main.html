@@ -26,6 +26,41 @@
   <a href="vr.html">Sección VR</a>
   <img src="pinguino.png" alt="icono" height="100" width="100">
   <p><marquee> - Ya se estreno la seccion de VR en este sitio! (11/feb/23) - </marquee></p>
-  
+  <script>
+    const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+let konamiCodePosition = 0;
+
+function checkKonamiCode(event) {
+  if (event.code === konamiCode[konamiCodePosition]) {
+    konamiCodePosition++;
+    if (konamiCodePosition === konamiCode.length) {
+      executeKonamiFunction();
+      konamiCodePosition = 0;
+    }
+  } else {
+    konamiCodePosition = 0;
+  }
+}
+
+function executeKonamiFunction() {
+  const interactableElements = document.querySelectorAll('a, button, input, select, textarea, h1, p, img, marquee');
+  interactableElements.forEach((element) => {
+    element.style.transform = 'rotate(360deg)';
+    element.style.transition = 'transform 1s ease-in-out';
+    element.style.backgroundColor = getRandomColor();
+  });
+}
+
+function getRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+document.addEventListener('keydown', checkKonamiCode);
+    </script>
   </body>
 </html>
