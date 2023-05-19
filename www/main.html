@@ -45,8 +45,11 @@ function checkKonamiCode(event) {
 function executeKonamiFunction() {
   const interactableElements = document.querySelectorAll('a, button, input, select, textarea, h1, p, img, marquee');
   interactableElements.forEach((element) => {
-    element.classList.add('spin-animation');
+    element.style.animation = 'slide-down 1s infinite linear';
     element.style.backgroundColor = getRandomColor();
+    if (element.tagName.toLowerCase() === 'img') {
+      element.src = 'https://media.tenor.com/y3r2tX3V5gkAAAAC/lasagna-cat-dance.gif';
+    }
   });
 }
 
@@ -60,16 +63,12 @@ function getRandomColor() {
 }
 
 document.addEventListener('keydown', checkKonamiCode);
-
     </script>
     <style>
-      .spin-animation {
-  animation: spin 1s infinite linear;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+@keyframes slide-down {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(2px); }
+  100% { transform: translateY(0); }
 }
     </style>
   </body>
