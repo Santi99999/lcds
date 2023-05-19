@@ -1,0 +1,24 @@
+p {
+font-family: "https://santi99999.github.io/fonts/NotoSansJP-Bold.ttf";
+font-size: 21px;
+letter-spacing: 2px;
+word-spacing: 2px;
+color: #000000;
+font-weight: 700;
+text-decoration: none solid rgb(68, 68, 68);
+font-style: normal;
+font-variant: normal;
+text-transform: none;
+}
+h1 {
+font-family: "https://santi99999.github.io/fonts/NotoSansJP-Bold.ttf";
+font-size: 32px;
+letter-spacing: 2px;
+word-spacing: 2px;
+color: #000000;
+font-weight: 700;
+text-decoration: none solid rgb(68, 68, 68);
+font-style: normal;
+font-variant: normal;
+text-transform: none;
+}

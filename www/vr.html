@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>LCDS-VR</title>
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-environment-component@1.4.0/dist/aframe-environment-component.min.js"></script>
+  <script src="https://cdn.rawgit.com/delapuente/aframe-sharedspace-component/master/dist/aframe-sharedspace-component.min.js"></script>
+  <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@tagOrCommit/dist/aframe-extras.min.js"></script>
+  <script src="https://unpkg.com/aframe-teleport-controls/dist/aframe-teleport-controls.min.js"></script>
+<style>
+  body {
+    font-family: Comic Sans MS;
+    line-height: 1.5em;
+    max-width: 768px;
+    margin: 0px auto;
+    padding: 64px;
+  }
+  code {
+    border: 1px solid #d0d0d0;
+    background-color: #f0f0f0;
+    padding: 2px 4px;
+    border-radius: 3px;
+  }
+</style>
+  </head>
+  <body>
+  <a-scene inspector-plugin-recast>
+  <a-camera>
+  <a-entity  
+  animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 0.2 0.2 0.2"
+  animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; from: 0.2 0.2 0.2; to: 0.1 0.1 0.1"
+  animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 0.2 0.2 0.2"
+  cursor="fuse: true;"
+  material="color: blue; shader: flat"
+  position="0 0 -3"
+  geometry="primitive: ring"></a-entity>
+  </a-camera>
+  <a-entity laser-controls="hand: left" raycaster="lineColor: red; lineOpacity: 0.5"></a-entity>
+  <a-entity laser-controls="hand: right" raycaster="lineColor: red; lineOpacity: 0.5"></a-entity>
+  <a-entity environment="preset: tron"></a-entity>
+  <a-text value="Esta es la seccion de experimentos en VR de Santi!!" width="10" position="-5 5 -10" rotation="0 -10 0"></a-text>
+  <a-curvedImage src="https://santii.autocode.dev/misitioweb@dev/pinguino.png" height="5" radius="4" theta-length="100" rotation="0 150 0" scale "50 50 50" position="0 10 -10" animation="property:rotation; from: 0 150 0; to: 0 360 0; dur:2000; startEvents: click;"></a-curvedImage>
+  <a-text value="acortar.link/lacuevadesanti" width="10" position="0 2 -10" rotation="0 -10 0"></a-text>
+  </a-scene>
+  </body>
+</html>
