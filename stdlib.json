@@ -1,0 +1,5 @@
+{
+  "name": "santii/misitioweb",
+  "timeout": 10000,
+  "connector": false
+}

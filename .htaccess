@@ -1,0 +1,2 @@
+ErrorDocument 404 https://santii.autocode.dev/misitioweb@dev/404/
+ErrorDocument 500 https://santii.autocode.dev/misitioweb@dev/500.html
