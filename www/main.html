@@ -48,6 +48,8 @@ function executeKonamiFunction() {
   interactableElements.forEach((element) => {
     element.style.animation = 'slide-down 1s infinite linear';
     element.style.backgroundColor = getRandomColor();
+    element.style.animationDelay = `${index * 0.1}s`;
+    element.classList.add('music-letter');
     audio.loop = true;
     audio.play();
     if (element.tagName.toLowerCase() === 'img') {
@@ -73,6 +75,14 @@ document.addEventListener('keydown', checkKonamiCode);
   50% { transform: translateY(10px); }
   100% { transform: translateY(0); }
 }
+      @keyframes music-visualizer {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+    .music-letter {
+      animation: music-visualizer 0.2s infinite;
+    }
     </style>
   </body>
 </html>
