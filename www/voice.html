@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LCDS-Voice</title>
+</head>
+<body>
+  <h1>Chat por voz</h1>
+
+  <div id="messages"></div>
+  <button id="recordButton" onmousedown="startRecording()" onmouseup="stopRecording()">Presioname para Hablar</button>
+
+  <script>
+    var recognition; // Objeto de reconocimiento de voz
+    var isRecording = false; // Variable para controlar la grabación
+
+    // Función para iniciar la grabación de voz
+    function startRecording() {
+      if (!isRecording) {
+        // Crear un nuevo objeto de reconocimiento de voz
+        recognition = new webkitSpeechRecognition(); // Cambiar a "SpeechRecognition()" en navegadores que no sean Chrome
+
+        // Establecer las opciones del reconocimiento de voz
+        recognition.lang = 'es-ES'; // Establecer el idioma
+        recognition.continuous = true; // Permitir el reconocimiento continuo
+
+        // Evento que se dispara cuando se detecta un resultado del reconocimiento de voz
+        recognition.onresult = function(event) {
+          var transcript = event.results[event.results.length - 1][0].transcript; // Obtener el texto reconocido
+
+          // Enviar el texto reconocido a través de la red o realizar cualquier otra acción
+          sendMessage(transcript);
+        };
+
+        // Iniciar el reconocimiento de voz
+        recognition.start();
+
+        isRecording = true;
+      }
+    }
+
+    // Función para detener la grabación de voz
+    function stopRecording() {
+      if (isRecording) {
+        // Detener el reconocimiento de voz
+        recognition.stop();
+
+        isRecording = false;
+      }
+    }
+
+    // Función para enviar el mensaje a través de la red (simulada)
+    function sendMessage(message) {
+      var messagesDiv = document.getElementById('messages');
+      var messageElement = document.createElement('p');
+      messageElement.textContent = message;
+      messagesDiv.appendChild(messageElement);
+    }
+  </script>
+</body>
+</html>
