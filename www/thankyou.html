@@ -5,7 +5,6 @@
   <script>
     var textIndex = 0;
     var texts = ['Sitio web hosteado en GitHub/Autocode', 'Programador: Santi9000 [programador y admin de la pagina], ChatGPT [ayudante o quizas esclavo]', 'Aplicaciónes usadas: GIMP [para diseño], Google Chrome [para hostear y usar a ChatGPT], Bloc de notas [para notas y codigo]', 'Gracias a toda la gente que ha estado en este proyecto!', ' Y especialmente...', 'Tú <3', 'Proyecto LCDS por Santi9000.'];
-    var colors = ['#ff0000', '#00ff00', '#0000ff'];
     var intervalId;
 
     function startEffects() {
@@ -17,10 +16,25 @@
 
     function changeTextAndColor() {
       document.getElementById('text').innerText = texts[textIndex];
-      document.body.style.backgroundColor = colors[textIndex];
+      var color = generateRandomColor();
+      document.body.style.backgroundColor = color;
       textIndex = (textIndex + 1) % texts.length;
+      if (text.length > 30) {
+  var firstHalf = text.substring(0, 15);
+  var secondHalf = text.substring(15);
+  document.getElementById('text').innerHTML = firstHalf + '<br>' + secondHalf;
+} else {
+  document.getElementById('text').innerText = text;
+}
+
     }
 
+    function generateRandomColor() {
+      var red = Math.floor(Math.random() * 256);
+      var green = Math.floor(Math.random() * 256);
+      var blue = Math.floor(Math.random() * 256);
+      return 'rgb(' + red + ',' + green + ',' + blue + ')';
+    }
   </script>
   <style>
     body {
