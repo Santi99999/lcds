@@ -19,12 +19,6 @@
       var color = generateRandomColor();
       document.body.style.backgroundColor = color;
       textIndex = (textIndex + 1) % texts.length;
-      if (text.length > 30) {
-  var firstHalf = text.substring(0, 15);
-  var secondHalf = text.substring(15);
-  document.getElementById('text').innerHTML = firstHalf + '<br>' + secondHalf;
-} else {
-  document.getElementById('text').innerText = text;
 }
 
     }
