@@ -48,12 +48,14 @@ function executeKonamiFunction() {
   interactableElements.forEach((element) => {
     element.style.animation = 'slide-down 1s infinite linear';
     element.style.backgroundColor = getRandomColor();
-    element.style.animationDelay = `${index * 0.1}s`;
-    element.classList.add('music-letter');
     audio.loop = true;
     audio.play();
     if (element.tagName.toLowerCase() === 'img') {
       element.src = 'https://media.tenor.com/y3r2tX3V5gkAAAAC/lasagna-cat-dance.gif';
+        if (backgroundInterval) {
+    clearInterval(backgroundInterval);
+  }
+  backgroundInterval = setInterval(changeBackgroundColor, 2000);
     }
   });
 }
@@ -67,6 +69,12 @@ function getRandomColor() {
   return color;
 }
 
+    function changeBackgroundColor() {
+  const body = document.body;
+  const randomColor = getRandomColor();
+  body.style.backgroundColor = randomColor;
+}
+    
 document.addEventListener('keydown', checkKonamiCode);
     </script>
     <style>
@@ -75,14 +83,6 @@ document.addEventListener('keydown', checkKonamiCode);
   50% { transform: translateY(10px); }
   100% { transform: translateY(0); }
 }
-      @keyframes music-visualizer {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0); }
-    }
-    .music-letter {
-      animation: music-visualizer 0.2s infinite;
-    }
     </style>
   </body>
 </html>
