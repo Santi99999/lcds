@@ -52,10 +52,7 @@ function executeKonamiFunction() {
     audio.play();
     if (element.tagName.toLowerCase() === 'img') {
       element.src = 'https://media.tenor.com/y3r2tX3V5gkAAAAC/lasagna-cat-dance.gif';
-        if (backgroundInterval) {
-    clearInterval(backgroundInterval);
-  }
-  backgroundInterval = setInterval(changeBackgroundColor, 2000);
+    changeBackgroundColor()
     }
   });
 }
