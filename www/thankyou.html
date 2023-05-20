@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>creditos</title>
+  <script>
+    var textIndex = 0;
+    var texts = ['Sitio web hosteado en GitHub/Autocode', 'Programador: Santi9000 [programador y admin de la pagina], ChatGPT [ayudante o quizas esclavo]', 'Aplicaciónes usadas: GIMP [para diseño], Google Chrome [para hostear y usar a ChatGPT], Bloc de notas [para notas y codigo]', 'Gracias a toda la gente que ha estado en este proyecto!', ' Y especialmente...', 'Tú <3', 'Proyecto LCDS por Santi9000.'];
+    var colors = ['#ff0000', '#00ff00', '#0000ff'];
+    var intervalId;
+
+    function startEffects() {
+      intervalId = setInterval(changeTextAndColor, 5000);
+      changeTextAndColor();
+      document.getElementById('start').style.display = 'none';
+
+    }
+
+    function changeTextAndColor() {
+      document.getElementById('text').innerText = texts[textIndex];
+      document.body.style.backgroundColor = colors[textIndex];
+      textIndex = (textIndex + 1) % texts.length;
+    }
+
+  </script>
+  <style>
+    body {
+      text-align: center;
+      background-color: #ffffff;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      font-size: 16px;
+      padding: 10px 20px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Creditos de LCDS</h1>
+  <p id="text">Para iniciar los creditos, presiona el botón!</p>
+  <button onclick="startEffects()" id="start">Iniciar creditos!</button>
+</body>
+</html>
