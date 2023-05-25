@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .ad-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      background: linear-gradient(to bottom, #91c8ff, #1c4e80);
+      padding: 20px;
+    }
+
+    .logo {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      opacity: 0.8;
+    }
+
+    .ad-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .ad-paragraph {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .ad-link {
+      font-size: 16px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="ad-container">
+    <img src="pinguino.png" alt="Logo" class="logo">
+    <h2 id="ad-title"></h2>
+    <p id="ad-paragraph"></p>
+    <a id="ad-link" href="#"></a>
+  </div>
+
+  <script>
+    var titles = ["Título 1", "Título 2", "Título 3"];
+    var paragraphs = ["Párrafo 1", "Párrafo 2", "Párrafo 3"];
+    var links = ["https://www.link1.com", "https://www.link2.com", "https://www.link3.com"];
+    var currentIndex = 0;
+
+    function updateAd() {
+      document.getElementById("ad-title").textContent = titles[currentIndex];
+      document.getElementById("ad-paragraph").textContent = paragraphs[currentIndex];
+      document.getElementById("ad-link").textContent = links[currentIndex];
+      document.getElementById("ad-link").href = links[currentIndex];
+
+      currentIndex++;
+      if (currentIndex >= titles.length) {
+        currentIndex = 0;
+      }
+    }
+
+    setInterval(updateAd, 5000);
+  </script>
+</body>
+</html>
