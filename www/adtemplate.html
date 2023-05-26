@@ -7,12 +7,18 @@
       padding: 0;
     }
 
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: linear-gradient(to bottom, #91c8ff, #1c4e80);
+    }
+
     .ad-container {
       width: 100%;
       max-width: 600px;
-      margin: 0 auto;
       text-align: center;
-      background: linear-gradient(to bottom, #91c8ff, #1c4e80);
       padding: 20px;
     }
 
@@ -41,11 +47,13 @@
   </style>
 </head>
 <body>
-  <div class="ad-container">
-    <img src="logo.png" alt="Logo" class="logo">
-    <h2 id="ad-title"></h2>
-    <p id="ad-paragraph"></p>
-    <a id="ad-link" href="#"></a>
+  <div class="container">
+    <div class="ad-container">
+      <img src="logo.png" alt="Logo" class="logo">
+      <h2 id="ad-title"></h2>
+      <p id="ad-paragraph"></p>
+      <a id="ad-link" href="#"></a>
+    </div>
   </div>
 
   <script>
