@@ -43,7 +43,7 @@ function checkKonamiCode(event) {
 }
 
 function executeKonamiFunction() {
-  const interactableElements = document.querySelectorAll('a, button, input, select, textarea, h1, p, img, marquee');
+  const interactableElements = document.querySelectorAll('a, button, input, select, textarea, h1, p, img, marquee, h3, code');
   interactableElements.forEach((element) => {
     element.style.animation = 'slide-down 1s infinite linear';
     element.style.backgroundColor = getRandomColor();
