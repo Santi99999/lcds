@@ -1,6 +1,76 @@
+<!DOCTYPE html>
 <html>
-  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-<a-scene arjs>
-  <a-box color="blue" position="0 1.5 -3"></a-box>
-</a-scene>
+  <head>
+    <meta charset="utf-8">
+    <title>arVR-japan</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-gui/aframe-gui.min.js"></script>
+  </head>
+  <body>
+    <a-scene cursor="rayOrigin: mouse">
+      <a-entity id="env" environment="preset: japan"></a-entity>
+      
+      <a-camera>
+        <a-cursor></a-cursor>
+      </a-camera>
+      
+      <a-entity id="teleportPoint" geometry="primitive: sphere; radius: 0.2" material="color: red" visible="false"></a-entity>
+      
+      <a-gui-flex-container visible="true" flex-direction="column" justify-content="center" align-items="center" width="1.5" height="1.5" position="0 0 -2">
+        <a-gui-button width="1.2" height="0.3" value="Teleport" on-click="teleport"></a-gui-button>
+      </a-gui-flex-container>
+      
+      <a-entity id="teleportMarker" geometry="primitive: ring; radiusInner: 0.2; radiusOuter: 0.3" material="color: lime" visible="false"></a-entity>
+      
+      <a-entity id="teleportCursor" cursor="fuse: true; fuseTimeout: 1500" raycaster="objects: .teleportable" visible="false"></a-entity>
+      
+      <a-entity id="ground" geometry="primitive: plane; width: 100; height: 100" material="color: #CCC" rotation="-90 0 0"></a-entity>
+    </a-scene>
+    
+    <script>
+      AFRAME.registerComponent('teleport', {
+        init: function () {
+          var self = this;
+          var marker = document.querySelector('#teleportMarker');
+          var cursor = document.querySelector('#teleportCursor');
+          var teleportPoint = document.querySelector('#teleportPoint');
+          
+          cursor.addEventListener('raycaster-intersected', function (evt) {
+            cursor.setAttribute('material', 'color', 'yellow');
+          });
+          
+          cursor.addEventListener('raycaster-intersected-cleared', function (evt) {
+            cursor.setAttribute('material', 'color', 'white');
+          });
+          
+          cursor.addEventListener('click', function (evt) {
+            marker.setAttribute('position', evt.detail.intersection.point);
+            marker.setAttribute('visible', 'true');
+            
+            teleportPoint.setAttribute('position', evt.detail.intersection.point);
+            teleportPoint.setAttribute('visible', 'true');
+          });
+          
+          self.el.addEventListener('click', function () {
+            var markerVisible = marker.getAttribute('visible');
+            if (markerVisible) {
+              var camera = document.querySelector('a-camera');
+              var markerPosition = marker.getAttribute('position');
+              
+              // Realiza la acción de teletransporte aquí
+              
+              // Limpia el punto de teletransporte
+              marker.setAttribute('visible', 'false');
+              teleportPoint.setAttribute('visible', 'false');
+            }
+          });
+        }
+      });
+      
+      document.querySelector('#env').addEventListener('loaded', function () {
+        var teleportButton = document.querySelector('a-gui-button');
+        teleportButton.setAttribute('teleport', '');
+      });
+    </script>
+  </body>
 </html>
