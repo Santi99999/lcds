@@ -7,7 +7,10 @@
   </head>
   <body>
 <a-scene environment="preset: default">
-  <a-box position="0 0 -3" color="blue"></a-box>
+  <a-box position="0 0 -3" color="blue" animation="property: rotation; to: 0 360 0; loop: true; dur: 2000"></a-box>
+<a-camera>
+<a-cursor></a-cursor>
+</a-camera>
  </a-scene>
   </body>
 </html>
