@@ -18,5 +18,25 @@
 <p>Esta pagina fue diseñada debido a que no podemos hacer que al no mas escribir "santi99999.github.io/lcds" se vaya a main.html.</p>
 <marquee>--No hay información que mostrar hoy--</marquee>
 <h2><a href="www/main.html">Entrar!</a></h2>
+<p id="dropper"></p>
+      <script>
+    window.onload = function() {
+      var textos = [
+        "El desarrollador estaba trabajando y dejo esto: 🍪 Galleta",
+        "El desarrollador estaba experimentando cosas de tecnologia y dejo esto: 💳 Arduino UNO",
+        "El desarollador se aburrio y dejo esta carpeta en el piso: 📁 memes del reddit",
+        "El desarrollador olvido integrar esta carpeta al sitio: 📁 gifs de pingu",
+        "El desarrollador pensaba ver Pingu pero olvido el CD: 💿 pingu temporada 1 a 6",
+        "Nada se ha caido al piso por parte del desarollador."
+      ];
+
+      var pElement = document.getElementById("dropper");
+
+      setInterval(function() {
+        var randomIndex = Math.floor(Math.random() * textos.length);
+        pElement.textContent = textos[randomIndex];
+      }, 15000);
+    };
+  </script>
   </body>
 </html>
